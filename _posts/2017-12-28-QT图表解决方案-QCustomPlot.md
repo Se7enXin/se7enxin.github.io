@@ -1,22 +1,21 @@
 ---
 title: QT图表解决方案-QCustomPlot
+description: QCustomPlot
 date: 2017-12-28 00:14:39
 categories:
-<!-- photos:
-- http://ww1.sinaimg.cn/mw690/81b78497jw1emfgwkasznj21hc0u0qb7.jpg
-- http://ww3.sinaimg.cn/mw690/81b78497jw1emfgwjrh2pj21hc0u01g3.jpg
-- http://ww2.sinaimg.cn/mw690/81b78497jw1emfgwil5xkj21hc0u0tpm.jpg
-- http://ww3.sinaimg.cn/mw690/81b78497jw1emfgvcdn25j21hc0u0qpa.jpg -->
 - QT
 tags:
 - QT
 ---
+
+<!-- more -->
 
 # 一、QCustomPlot简介
 
 ## [QCustomPlot官网](http://www.qcustomplot.com/)   
 
 > QCustomPlot是一个用于编写可视化图表的 QT C++库。
+
 
 ## 目录结构
 
