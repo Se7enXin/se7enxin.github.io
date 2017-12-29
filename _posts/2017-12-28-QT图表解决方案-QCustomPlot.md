@@ -16,7 +16,6 @@ tags:
 
 > QCustomPlot是一个用于编写可视化图表的 QT C++库。
 
-
 ## 目录结构
 
 qcustomplot.cpp、qcustomplot.h为源码文件，需要添加到自己的工程中。
@@ -174,6 +173,9 @@ void MainWindow::clearPlotsDataCb()
 
 ## 4、效果预览
 
+![]({{ site.baseurl }}/assets/images/qcustomplot.gif)
+
+## 5、代码下载
 
 
 # 三、推荐资料
