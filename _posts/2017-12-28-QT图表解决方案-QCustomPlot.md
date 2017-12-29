@@ -2,6 +2,25 @@
 title: QT图表解决方案-QCustomPlot
 description: QCustomPlot
 date: 2017-12-28 14:48:00
+photos:
+- https://s1.ax1x.com/2017/12/29/zt7u9.png
+- https://s1.ax1x.com/2017/12/29/ztbH1.png
+- https://s1.ax1x.com/2017/12/29/ztLAx.png
+- https://s1.ax1x.com/2017/12/29/ztojJ.png
+- https://s1.ax1x.com/2017/12/29/ztHBR.png
+- https://s1.ax1x.com/2017/12/29/ztON6.png
+- https://s1.ax1x.com/2017/12/29/ztv9O.png
+- https://s1.ax1x.com/2017/12/29/ztX4K.png
+- https://s1.ax1x.com/2017/12/29/ztx3D.png
+- https://s1.ax1x.com/2017/12/29/ztzge.png
+- https://s1.ax1x.com/2017/12/29/zNSjH.png
+- https://s1.ax1x.com/2017/12/29/zND56.png
+- https://s1.ax1x.com/2017/12/29/zNar9.png
+- https://s1.ax1x.com/2017/12/29/zNUKJ.png
+- https://s1.ax1x.com/2017/12/29/zNBUx.png
+- https://s1.ax1x.com/2017/12/29/zNdbR.png
+- https://s1.ax1x.com/2017/12/29/zN0V1.png
+- https://s1.ax1x.com/2017/12/29/zNsPK.png
 categories:
 - QT
 tags:
@@ -9,6 +28,8 @@ tags:
 ---
 
 <!-- more -->
+
+---
 
 # 一、QCustomPlot简介
 
