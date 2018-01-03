@@ -198,6 +198,7 @@ void MainWindow::clearPlotsDataCb()
 
 ## 5、代码下载
 
+[Demo地址](https://github.com/Se7enXin/QCustomPlots_Demo.git)
 
 # 三、推荐资料
 
