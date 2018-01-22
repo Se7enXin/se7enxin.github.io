@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+    <entry>
+      <title><![CDATA[QT图表解决方案-QCustomPlot]]></title>
+      <url>/2017-12-28/QT%E5%9B%BE%E8%A1%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-QCustomPlot/</url>
+      <content type="html"><![CDATA[<!-- more -->
+
+<hr />
+
+<h1 id="一qcustomplot简介">一、QCustomPlot简介</h1>
+
+<h2 id="qcustomplot官网"><a href="http://www.qcustomplot.com/">QCustomPlot官网</a></h2>
+
+<blockquote>
+  <p>QCustomPlot是一个用于编写可视化图表的 QT C++库。</p>
+</blockquote>
+
+<h2 id="目录结构">目录结构</h2>
+
+<p>qcustomplot.cpp、qcustomplot.h为源码文件，需要添加到自己的工程中。
+example文件夹下有4个官方提供的demo，编译后可以直接运行。</p>
+
+<p><a href="https://imgchr.com/i/xxrVS"><img src="https://s1.ax1x.com/2017/12/28/xxrVS.png" alt="目录结构" /></a></p>
+
+<h1 id="二使用">二、使用</h1>
+
+<blockquote>
+  <p>本文举的例子：不断接收指定数据，实时刷新图表，最终绘制成一副完整的图表。</p>
+</blockquote>
+
+<p>本文编写时使用版本：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Version: 2.0.0
+</code></pre></div></div>
+
+<h2 id="1引入qcustomplot">1、引入QCustomPlot</h2>
+
+<p>将源码文件添加到工程中。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>qcustomplot.cpp
+qcustomplot.h
+</code></pre></div></div>
+
+<h2 id="2创建plot">2、创建plot</h2>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" />7<br data-jekyll-commonmark-ghpages="" />8<br data-jekyll-commonmark-ghpages="" />9<br data-jekyll-commonmark-ghpages="" />10<br data-jekyll-commonmark-ghpages="" />11<br data-jekyll-commonmark-ghpages="" />12<br data-jekyll-commonmark-ghpages="" />13<br data-jekyll-commonmark-ghpages="" />14<br data-jekyll-commonmark-ghpages="" />15<br data-jekyll-commonmark-ghpages="" />16<br data-jekyll-commonmark-ghpages="" />17<br data-jekyll-commonmark-ghpages="" />18<br data-jekyll-commonmark-ghpages="" />19<br data-jekyll-commonmark-ghpages="" />20<br data-jekyll-commonmark-ghpages="" />21<br data-jekyll-commonmark-ghpages="" />22<br data-jekyll-commonmark-ghpages="" />23<br data-jekyll-commonmark-ghpages="" />24<br data-jekyll-commonmark-ghpages="" />25<br data-jekyll-commonmark-ghpages="" />26<br data-jekyll-commonmark-ghpages="" />27<br data-jekyll-commonmark-ghpages="" />28<br data-jekyll-commonmark-ghpages="" />29<br data-jekyll-commonmark-ghpages="" />30<br data-jekyll-commonmark-ghpages="" />31<br data-jekyll-commonmark-ghpages="" />32<br data-jekyll-commonmark-ghpages="" />33<br data-jekyll-commonmark-ghpages="" />34<br data-jekyll-commonmark-ghpages="" />35<br data-jekyll-commonmark-ghpages="" />36<br data-jekyll-commonmark-ghpages="" />37<br data-jekyll-commonmark-ghpages="" />38<br data-jekyll-commonmark-ghpages="" />39<br data-jekyll-commonmark-ghpages="" />40<br data-jekyll-commonmark-ghpages="" />41<br data-jekyll-commonmark-ghpages="" />42<br data-jekyll-commonmark-ghpages="" />43<br data-jekyll-commonmark-ghpages="" />44<br data-jekyll-commonmark-ghpages="" />45<br data-jekyll-commonmark-ghpages="" />46<br data-jekyll-commonmark-ghpages="" />47<br data-jekyll-commonmark-ghpages="" />48<br data-jekyll-commonmark-ghpages="" />49<br data-jekyll-commonmark-ghpages="" />50<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="kt">void</span> <span class="n">MainWindow</span><span class="o">::</span><span class="n">plotsInit</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><br data-jekyll-commonmark-ghpages="" /><span class="p">{</span><br data-jekyll-commonmark-ghpages="" />    <span class="n">customPlot</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QCustomPlot</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" />    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">setGeometry</span><span class="p">(</span><span class="n">screen_w</span><span class="o">*</span><span class="mi">0</span><span class="o">/</span><span class="mi">1024</span><span class="p">,</span> <span class="n">screen_h</span><span class="o">*</span><span class="mi">120</span><span class="o">/</span><span class="mi">600</span><span class="p">,</span> <span class="n">screen_w</span><span class="o">*</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="p">,</span> <span class="n">screen_h</span><span class="o">*</span><span class="mi">470</span><span class="o">/</span><span class="mi">600</span><span class="p">);</span><span class="c1">//设置曲线系坐标<br data-jekyll-commonmark-ghpages="" /></span>  <br data-jekyll-commonmark-ghpages="" />    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">yAxis</span><span class="o">-&gt;</span><span class="n">setLabel</span><span class="p">(</span><span class="n">tr</span><span class="p">(</span><span class="s">"压力(Pa)"</span><span class="p">));</span> <br data-jekyll-commonmark-ghpages="" />    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">legend</span><span class="o">-&gt;</span><span class="n">setVisible</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" />    <span class="c1">//添加第一条曲线<br data-jekyll-commonmark-ghpages="" /></span>    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">addGraph</span><span class="p">();</span><br data-jekyll-commonmark-ghpages="" />    <span class="n">QPen</span> <span class="n">bluePen</span><span class="p">;</span>  <br data-jekyll-commonmark-ghpages="" />    <span class="n">bluePen</span><span class="p">.</span><span class="n">setColor</span><span class="p">(</span><span class="n">QColor</span><span class="p">(</span><span class="s">"#33CCCC"</span><span class="p">));</span>  <br data-jekyll-commonmark-ghpages="" />    <span class="n">bluePen</span><span class="p">.</span><span class="n">setWidthF</span><span class="p">(</span><span class="mf">2.5</span><span class="p">);</span>  <br data-jekyll-commonmark-ghpages="" />    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setPen</span><span class="p">(</span><span class="n">bluePen</span><span class="p">);</span> <br data-jekyll-commonmark-ghpages="" />    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setName</span><span class="p">(</span><span class="n">tr</span><span class="p">(</span><span class="s">"数据1"</span><span class="p">));</span><br data-jekyll-commonmark-ghpages="" />    <span class="c1">//曲线上数据点的样式，大小；这里设置为空心圆<br data-jekyll-commonmark-ghpages="" /></span>    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setScatterStyle</span><span class="p">(</span><span class="n">QCPScatterStyle</span><span class="p">(</span><span class="n">QCPScatterStyle</span><span class="o">::</span><span class="n">ssCircle</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span><br data-jekyll-commonmark-ghpages="" />    <br data-jekyll-commonmark-ghpages="" />    <span class="c1">//添加第二条曲线<br data-jekyll-commonmark-ghpages="" /></span>    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">addGraph</span><span class="p">();</span><br data-jekyll-commonmark-ghpages="" />    <span class="n">QPen</span> <span class="n">greenPen</span><span class="p">;</span>  <br data-jekyll-commonmark-ghpages="" />    <span class="n">greenPen</span><span class="p">.</span><span class="n">setColor</span><span class="p">(</span><span class="n">QColor</span><span class="p">(</span><span class="s">"#0066CC"</span><span class="p">));</span>  <br data-jekyll-commonmark-ghpages="" />    <span class="n">greenPen</span><span class="p">.</span><span class="n">setWidthF</span><span class="p">(</span><span class="mf">2.5</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" />    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setPen</span><span class="p">(</span><span class="n">greenPen</span><span class="p">);</span> <br data-jekyll-commonmark-ghpages="" />    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setName</span><span class="p">(</span><span class="n">tr</span><span class="p">(</span><span class="s">"数据2"</span><span class="p">));</span><br data-jekyll-commonmark-ghpages="" />    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setScatterStyle</span><span class="p">(</span><span class="n">QCPScatterStyle</span><span class="p">(</span><span class="n">QCPScatterStyle</span><span class="o">::</span><span class="n">ssCircle</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" />    <span class="c1">//添加第三条曲线<br data-jekyll-commonmark-ghpages="" /></span>    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">addGraph</span><span class="p">();</span><br data-jekyll-commonmark-ghpages="" />    <span class="n">QPen</span> <span class="n">redPen</span><span class="p">;</span>  <br data-jekyll-commonmark-ghpages="" />    <span class="n">redPen</span><span class="p">.</span><span class="n">setColor</span><span class="p">(</span><span class="n">QColor</span><span class="p">(</span><span class="s">"#FF3366"</span><span class="p">));</span>  <br data-jekyll-commonmark-ghpages="" />    <span class="n">redPen</span><span class="p">.</span><span class="n">setWidthF</span><span class="p">(</span><span class="mf">2.5</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" />    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setPen</span><span class="p">(</span><span class="n">redPen</span><span class="p">);</span> <br data-jekyll-commonmark-ghpages="" />    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setName</span><span class="p">(</span><span class="n">tr</span><span class="p">(</span><span class="s">"数据3"</span><span class="p">));</span><br data-jekyll-commonmark-ghpages="" />    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setScatterStyle</span><span class="p">(</span><span class="n">QCPScatterStyle</span><span class="p">(</span><span class="n">QCPScatterStyle</span><span class="o">::</span><span class="n">ssCircle</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span><br data-jekyll-commonmark-ghpages="" />  <br data-jekyll-commonmark-ghpages="" />    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">axisRect</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">insetLayout</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">setInsetAlignment</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Qt</span><span class="o">::</span><span class="n">AlignTop</span><span class="o">|</span><span class="n">Qt</span><span class="o">::</span><span class="n">AlignRight</span><span class="p">);</span><span class="c1">//标签位置<br data-jekyll-commonmark-ghpages="" /></span><br data-jekyll-commonmark-ghpages="" />    <span class="c1">// set blank axis lines:<br data-jekyll-commonmark-ghpages="" /></span>    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">xAxis</span><span class="o">-&gt;</span><span class="n">setTicks</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span> <span class="c1">//刻度<br data-jekyll-commonmark-ghpages="" /></span>    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">yAxis</span><span class="o">-&gt;</span><span class="n">setTicks</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" />    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">xAxis</span><span class="o">-&gt;</span><span class="n">setTickLabels</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>  <span class="c1">//文本<br data-jekyll-commonmark-ghpages="" /></span>    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">yAxis</span><span class="o">-&gt;</span><span class="n">setTickLabels</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" />    <span class="c1">// make top right axes clones of bottom left axes:<br data-jekyll-commonmark-ghpages="" /></span>    <span class="cm">/*<br data-jekyll-commonmark-ghpages="" />      一个默认的坐标轴矩形配置，包括：顶部坐标轴跟随底部坐标轴同步、右侧坐标轴跟随左侧坐标轴同步，<br data-jekyll-commonmark-ghpages="" />      不仅仅是坐标轴范围跟随同步，包括文本精度、文本格式、坐标轴类型、是否自动生成刻度、刻度间距等等。<br data-jekyll-commonmark-ghpages="" />    */</span><br data-jekyll-commonmark-ghpages="" />    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">axisRect</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">setupFullAxesBox</span><span class="p">();</span><br data-jekyll-commonmark-ghpages="" /><span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<h2 id="3回调函数qt槽函数">3、回调函数（QT槽函数）</h2>
+
+<p>通过QT中的信号和槽机制，外部发送Signal来调用槽函数。</p>
+
+<p>以下（2）举例，创建信号和槽：</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">changePlotsRangeSignal</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SIGNALS</span><span class="p">();</span><br data-jekyll-commonmark-ghpages="" /><span class="n">connect</span><span class="p">(</span><span class="n">changePlotsRangeSignal</span><span class="p">,</span><span class="n">SIGNAL</span><span class="p">(</span><span class="n">changePlotsRangeSignal</span><span class="p">()),</span> <span class="k">this</span><span class="p">,</span> <span class="n">SLOT</span><span class="p">(</span><span class="n">changePlotsRangeCb</span><span class="p">()));</span></code></pre></figure>
+
+<p>外部调用：</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">changePlotsRangeSignal</span><span class="o">-&gt;</span><span class="n">sendChangePlotsRangeSignal</span><span class="p">();</span></code></pre></figure>
+
+<h3 id="1接收数据实时刷新ui">（1）接收数据，实时刷新UI</h3>
+
+<p>每接收到一次数据时，调用该函数，实时刷新图表。</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" />7<br data-jekyll-commonmark-ghpages="" />8<br data-jekyll-commonmark-ghpages="" />9<br data-jekyll-commonmark-ghpages="" />10<br data-jekyll-commonmark-ghpages="" />11<br data-jekyll-commonmark-ghpages="" />12<br data-jekyll-commonmark-ghpages="" />13<br data-jekyll-commonmark-ghpages="" />14<br data-jekyll-commonmark-ghpages="" />15<br data-jekyll-commonmark-ghpages="" />16<br data-jekyll-commonmark-ghpages="" />17<br data-jekyll-commonmark-ghpages="" />18<br data-jekyll-commonmark-ghpages="" />19<br data-jekyll-commonmark-ghpages="" />20<br data-jekyll-commonmark-ghpages="" />21<br data-jekyll-commonmark-ghpages="" />22<br data-jekyll-commonmark-ghpages="" />23<br data-jekyll-commonmark-ghpages="" />24<br data-jekyll-commonmark-ghpages="" />25<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="kt">int</span> <span class="n">data_size</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">;</span><br data-jekyll-commonmark-ghpages="" /><span class="n">QVector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">data1_x_</span><span class="p">(</span><span class="n">data_size</span><span class="p">),</span> <span class="n">data1_y_</span><span class="p">(</span><span class="n">data_size</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><span class="n">QVector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">data2_x_</span><span class="p">(</span><span class="n">data_size</span><span class="p">),</span> <span class="n">data2_y_</span><span class="p">(</span><span class="n">data_size</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><span class="n">QVector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">data3_x_</span><span class="p">(</span><span class="n">data_size</span><span class="p">),</span> <span class="n">data3_y_</span><span class="p">(</span><span class="n">data_size</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><span class="kt">int</span> <span class="n">recv_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><br data-jekyll-commonmark-ghpages="" /><span class="kt">void</span> <span class="n">MainWindow</span><span class="o">::</span><span class="n">changePlotsDataCb</span><span class="p">(</span><span class="kt">float</span> <span class="n">data1_x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">data1_y</span><span class="p">,</span> <span class="kt">float</span> <span class="n">data2_x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">data2_y</span><span class="p">,</span> <span class="kt">float</span> <span class="n">data3_x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">data3_y</span><span class="p">)</span><br data-jekyll-commonmark-ghpages="" /><span class="p">{</span><br data-jekyll-commonmark-ghpages="" />    <span class="n">data1_x_</span><span class="p">[</span><span class="n">recv_count</span><span class="p">]</span> <span class="o">=</span> <span class="n">data1_x</span><span class="p">;</span><br data-jekyll-commonmark-ghpages="" />    <span class="n">data1_y_</span><span class="p">[</span><span class="n">recv_count</span><span class="p">]</span> <span class="o">=</span> <span class="n">data1_y</span><span class="p">;</span><br data-jekyll-commonmark-ghpages="" />    <span class="n">data2_x_</span><span class="p">[</span><span class="n">recv_count</span><span class="p">]</span> <span class="o">=</span> <span class="n">data2_x</span><span class="p">;</span><br data-jekyll-commonmark-ghpages="" />    <span class="n">data2_y_</span><span class="p">[</span><span class="n">recv_count</span><span class="p">]</span> <span class="o">=</span> <span class="n">data2_y</span><span class="p">;</span><br data-jekyll-commonmark-ghpages="" />    <span class="n">data3_x_</span><span class="p">[</span><span class="n">recv_count</span><span class="p">]</span> <span class="o">=</span> <span class="n">data3_x</span><span class="p">;</span><br data-jekyll-commonmark-ghpages="" />    <span class="n">data3_y_</span><span class="p">[</span><span class="n">recv_count</span><span class="p">]</span> <span class="o">=</span> <span class="n">data3_y</span><span class="p">;</span><br data-jekyll-commonmark-ghpages="" />    <span class="n">recv_count</span> <span class="o">++</span><span class="p">;</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" />    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setData</span><span class="p">(</span><span class="n">data1_x_</span><span class="p">,</span> <span class="n">data1_y_</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" />    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setData</span><span class="p">(</span><span class="n">data2_x_</span><span class="p">,</span> <span class="n">data2_y_</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" />    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setData</span><span class="p">(</span><span class="n">data3_x_</span><span class="p">,</span> <span class="n">data3_y_</span><span class="p">);</span><br data-jekyll-commonmark-ghpages="" /><br data-jekyll-commonmark-ghpages="" />    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">rescaleAxes</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span> <span class="c1">//坐标轴自适应<br data-jekyll-commonmark-ghpages="" /></span>    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">rescaleAxes</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span> <span class="c1">//坐标轴自适应<br data-jekyll-commonmark-ghpages="" /></span>    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">rescaleAxes</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span> <span class="c1">//坐标轴自适应<br data-jekyll-commonmark-ghpages="" /></span><br data-jekyll-commonmark-ghpages="" />    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">replot</span><span class="p">();</span>  <span class="c1">//重绘<br data-jekyll-commonmark-ghpages="" /></span><span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<h3 id="2修改图表比例">（2）修改图表比例</h3>
+
+<p>数据接收完毕后调用一次，缩放图表，优化显示效果。</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" />7<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="kt">void</span> <span class="n">MainWindow</span><span class="o">::</span><span class="n">changePlotsRangeCb</span><span class="p">()</span><br data-jekyll-commonmark-ghpages="" /><span class="p">{</span><br data-jekyll-commonmark-ghpages="" />    <span class="c1">// zoom out a bit: <br data-jekyll-commonmark-ghpages="" /></span>    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">yAxis</span><span class="o">-&gt;</span><span class="n">scaleRange</span><span class="p">(</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">yAxis</span><span class="o">-&gt;</span><span class="n">range</span><span class="p">().</span><span class="n">center</span><span class="p">());</span><br data-jekyll-commonmark-ghpages="" />    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">xAxis</span><span class="o">-&gt;</span><span class="n">scaleRange</span><span class="p">(</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">xAxis</span><span class="o">-&gt;</span><span class="n">range</span><span class="p">().</span><span class="n">center</span><span class="p">());</span><br data-jekyll-commonmark-ghpages="" />    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">replot</span><span class="p">();</span> <br data-jekyll-commonmark-ghpages="" /><span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<h3 id="3清除图表数据">（3）清除图表数据</h3>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1<br data-jekyll-commonmark-ghpages="" />2<br data-jekyll-commonmark-ghpages="" />3<br data-jekyll-commonmark-ghpages="" />4<br data-jekyll-commonmark-ghpages="" />5<br data-jekyll-commonmark-ghpages="" />6<br data-jekyll-commonmark-ghpages="" />7<br data-jekyll-commonmark-ghpages="" /></pre></td><td class="code"><pre><span class="kt">void</span> <span class="n">MainWindow</span><span class="o">::</span><span class="n">clearPlotsDataCb</span><span class="p">()</span><br data-jekyll-commonmark-ghpages="" /><span class="p">{</span><br data-jekyll-commonmark-ghpages="" />    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">().</span><span class="n">data</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">clear</span><span class="p">();</span><br data-jekyll-commonmark-ghpages="" />    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">().</span><span class="n">data</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">clear</span><span class="p">();</span><br data-jekyll-commonmark-ghpages="" />    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">().</span><span class="n">data</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">clear</span><span class="p">();</span><br data-jekyll-commonmark-ghpages="" />    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">replot</span><span class="p">();</span> <br data-jekyll-commonmark-ghpages="" /><span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>若之前调用过（2），那么清除后需要将图表比例复原。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>customPlot-&gt;yAxis-&gt;scaleRange(0.9, customPlot-&gt;yAxis-&gt;range().center());
+customPlot-&gt;xAxis-&gt;scaleRange(0.9, customPlot-&gt;xAxis-&gt;range().center());
+</code></pre></div></div>
+
+<h2 id="4效果预览">4、效果预览</h2>
+
+<p><img src="/assets/images/qcustomplot.gif" alt="" /></p>
+
+<h2 id="5代码下载">5、代码下载</h2>
+
+<p><a href="https://github.com/Se7enXin/QCustomPlots_Demo.git">Demo地址</a></p>
+
+<h1 id="三推荐资料">三、推荐资料</h1>
+
+<h4 id="qcustomplot使用分享"><a href="http://www.cnblogs.com/swarmbees/category/908110.html">QCustomPlot使用分享</a></h4>
+
+<blockquote>
+  <p>一共7篇文章，介绍的比较详细。</p>
+</blockquote>
+
+<h4 id="qcustomplot绘图控件的使用"><a href="http://blog.csdn.net/zhangfuliang123/article/details/45197411">QCustomPlot绘图控件的使用</a></h4>
+
+<blockquote>
+  <p>一些图表初始化时常用的设置</p>
+</blockquote>
+]]></content>
+      <categories>
+        
+          <category> QT </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> QT </tag>
+        
+          <tag> C++ </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Hello, World!]]></title>
+      <url>/2017-12-18/test/</url>
+      <content type="html"><![CDATA[<table>
+  <thead>
+    <tr>
+      <th>Table Header 1</th>
+      <th>Table Header 2</th>
+      <th>Table Header 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Division 1</td>
+      <td>Division 2</td>
+      <td>Division 3</td>
+    </tr>
+    <tr>
+      <td>Division 1</td>
+      <td>Division 2</td>
+      <td>Division 3</td>
+    </tr>
+    <tr>
+      <td>Division 1</td>
+      <td>Division 2</td>
+      <td>Division 3</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>NexT is a high quality elegant <a href="https://jekyllrb.com">Jekyll</a> theme ported from <a href="https://github.com/iissnan/hexo-theme-next">Hexo Next</a>. It is crafted from scratch, with love.</p>
+</blockquote>
+
+<!-- more -->
+
+<p><a href="http://simpleyyt.github.io/jekyll-theme-next/">Live Preview</a></p>
+
+<h2 id="screenshots">Screenshots</h2>
+
+<ul>
+  <li>
+    <p>Desktop
+<img src="http://iissnan.com/nexus/next/desktop-preview.png" alt="Desktop Preview" /></p>
+  </li>
+  <li>
+    <p>Sidebar</p>
+  </li>
+</ul>
+
+<p><img src="http://iissnan.com/nexus/next/desktop-sidebar-preview.png" alt="Desktop Sidebar Preview" /></p>
+
+<ul>
+  <li>Sidebar (Post details page)</li>
+</ul>
+
+<p><img src="http://iissnan.com/nexus/next/desktop-sidebar-toc.png" alt="Desktop Sidebar Preview" /></p>
+
+<ul>
+  <li>Mobile</li>
+</ul>
+
+<p><img src="http://iissnan.com/nexus/next/mobile.png" alt="Mobile Preview" /></p>
+
+<h2 id="installation">Installation</h2>
+
+<p>Check whether you have <code class="highlighter-rouge">Ruby 2.1.0</code> or higher installed:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ruby <span class="nt">--version</span>
+</code></pre></div></div>
+
+<p>Install <code class="highlighter-rouge">Bundler</code>:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem install bundler
+</code></pre></div></div>
+
+<p>Clone Jacman theme:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/Simpleyyt/jekyll-theme-next.git
+<span class="nb">cd </span>jekyll-theme-next
+</code></pre></div></div>
+
+<p>Install Jekyll and other dependencies from the GitHub Pages gem:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle install
+</code></pre></div></div>
+
+<p>Run your Jekyll site locally:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll server
+</code></pre></div></div>
+
+<p>More Details：<a href="https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/">Setting up your GitHub Pages site locally with Jekyll</a></p>
+
+<h2 id="features">Features</h2>
+
+<h3 id="multiple-languages-support-including-english--russian--french--german--simplified-chinese--traditional-chinese">Multiple languages support, including: English / Russian / French / German / Simplified Chinese / Traditional Chinese.</h3>
+
+<p>Default language is English.</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">language</span><span class="pi">:</span> <span class="s">en</span>
+<span class="c1"># language: zh-Hans</span>
+<span class="c1"># language: fr-FR</span>
+<span class="c1"># language: zh-hk</span>
+<span class="c1"># language: zh-tw</span>
+<span class="c1"># language: ru</span>
+<span class="c1"># language: de</span>
+</code></pre></div></div>
+
+<p>Set <code class="highlighter-rouge">language</code> field as following in site <code class="highlighter-rouge">_config.yml</code> to change to Chinese.</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">language</span><span class="pi">:</span> <span class="s">zh-Hans</span>
+</code></pre></div></div>
+
+<h3 id="comment-support">Comment support.</h3>
+
+<p>NexT has native support for <code class="highlighter-rouge">DuoShuo</code> and <code class="highlighter-rouge">Disqus</code> comment systems.</p>
+
+<p>Add the following snippets to your <code class="highlighter-rouge">_config.yml</code>:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">duoshuo</span><span class="pi">:</span>
+  <span class="na">enable</span><span class="pi">:</span> <span class="no">true</span>
+  <span class="na">shortname</span><span class="pi">:</span> <span class="s">your-duoshuo-shortname</span>
+</code></pre></div></div>
+
+<p>OR</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">disqus_shortname</span><span class="pi">:</span> <span class="s">your-disqus-shortname</span>
+</code></pre></div></div>
+
+<h3 id="social-media">Social Media</h3>
+
+<p>NexT can automatically add links to your Social Media accounts:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">social</span><span class="pi">:</span>
+  <span class="na">GitHub</span><span class="pi">:</span> <span class="s">your-github-url</span>
+  <span class="na">Twitter</span><span class="pi">:</span> <span class="s">your-twitter-url</span>
+  <span class="na">Weibo</span><span class="pi">:</span> <span class="s">your-weibo-url</span>
+  <span class="na">DouBan</span><span class="pi">:</span> <span class="s">your-douban-url</span>
+  <span class="na">ZhiHu</span><span class="pi">:</span> <span class="s">your-zhihu-url</span>
+</code></pre></div></div>
+
+<h3 id="feed-link">Feed link.</h3>
+
+<blockquote>
+  <p>Show a feed link.</p>
+</blockquote>
+
+<p>Set <code class="highlighter-rouge">rss</code> field in theme’s <code class="highlighter-rouge">_config.yml</code>, as the following value:</p>
+
+<ol>
+  <li><code class="highlighter-rouge">rss: false</code> will totally disable feed link.</li>
+  <li>
+    <p><code class="highlighter-rouge">rss:  </code> use sites’ feed link. This is the default option.</p>
+
+    <p>Follow the installation instruction in the plugin’s README. After the configuration is done for this plugin, the feed link is ready too.</p>
+  </li>
+  <li><code class="highlighter-rouge">rss: http://your-feed-url</code> set specific feed link.</li>
+</ol>
+
+<h3 id="up-to-5-code-highlight-themes-built-in">Up to 5 code highlight themes built-in.</h3>
+
+<p>NexT uses <a href="https://github.com/chriskempson/tomorrow-theme">Tomorrow Theme</a> with 5 themes for you to choose from.
+Next use <code class="highlighter-rouge">normal</code> by default. Have a preview about <code class="highlighter-rouge">normal</code> and <code class="highlighter-rouge">night</code>:</p>
+
+<p><img src="http://iissnan.com/nexus/next/tomorrow-normal.png" alt="Tomorrow Normal Preview" />
+<img src="http://iissnan.com/nexus/next/tomorrow-night.png" alt="Tomorrow Night Preview" /></p>
+
+<p>Head over to <a href="https://github.com/chriskempson/tomorrow-theme">Tomorrow Theme</a> for more details.</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>NexT comes with few configurations.</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1"># Menu configuration.</span>
+<span class="na">menu</span><span class="pi">:</span>
+  <span class="na">home</span><span class="pi">:</span> <span class="s">/</span>
+  <span class="na">archives</span><span class="pi">:</span> <span class="s">/archives</span>
+
+<span class="c1"># Favicon</span>
+<span class="na">favicon</span><span class="pi">:</span> <span class="s">/favicon.ico</span>
+
+<span class="c1"># Avatar (put the image into next/source/images/)</span>
+<span class="c1"># can be any image format supported by web browsers (JPEG,PNG,GIF,SVG,..)</span>
+<span class="na">avatar</span><span class="pi">:</span> <span class="s">/default_avatar.png</span>
+
+<span class="c1"># Code highlight theme</span>
+<span class="c1"># available: normal | night | night eighties | night blue | night bright</span>
+<span class="na">highlight_theme</span><span class="pi">:</span> <span class="s">normal</span>
+
+<span class="c1"># Fancybox for image gallery</span>
+<span class="na">fancybox</span><span class="pi">:</span> <span class="no">true</span>
+
+<span class="c1"># Specify the date when the site was setup</span>
+<span class="na">since</span><span class="pi">:</span> <span class="s">2013</span>
+
+</code></pre></div></div>
+
+<h2 id="browser-support">Browser support</h2>
+
+<p><img src="http://iissnan.com/nexus/next/browser-support.png" alt="Browser support" /></p>
+]]></content>
+      <categories>
+        
+          <category> Test </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> Test </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+</search>
