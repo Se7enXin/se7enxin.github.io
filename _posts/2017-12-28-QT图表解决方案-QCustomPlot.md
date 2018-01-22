@@ -22,10 +22,16 @@ photos:
 - https://s1.ax1x.com/2017/12/29/zN0V1.png
 - https://s1.ax1x.com/2017/12/29/zNsPK.png
 categories:
+<<<<<<< HEAD
 - QT 
 tags:
 - QT 
 - C++
+=======
+- QT
+tags:
+- QT
+>>>>>>> bf2751e46eb754f427eca4dfd4eec6601281054c
 ---
 
 <!-- more -->
