@@ -2,6 +2,86 @@
 <search>
   
     <entry>
+      <title><![CDATA[Raspberry in common use]]></title>
+      <url>/2018-03-14/Raspberry/</url>
+      <content type="html"><![CDATA[<!-- more -->
+
+<h1 id="一raspberry">一、<a href="https://www.raspberrypi.org/">Raspberry</a></h1>
+
+<h1 id="二config">二、Config</h1>
+
+<h2 id="1设置静态ip">（1）设置静态IP</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/etc/network/interfaces
+
+auto eth0
+iface eth0 inet static
+address xxx.xxx.xxx.xxx
+gateway xxx.xxx.xxx.xxx
+netmask 255.255.255.0
+</code></pre></div></div>
+
+<p>重置网络：</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>/etc/init.d/networking restart
+</code></pre></div></div>
+
+<h2 id="2设置路由">（2）设置路由</h2>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>route add default gw xxx.xxx.xxx.xxx
+</code></pre></div></div>
+
+<h2 id="3dns">（3）DNS</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/etc/resolv.conf
+</code></pre></div></div>
+
+<h2 id="4挂载">（4）挂载</h2>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>mount <span class="nt">-o</span> nolock,wsize<span class="o">=</span>1024,rsize<span class="o">=</span>1024 目标主机IP:挂载路径 树莓派路径
+</code></pre></div></div>
+
+<h2 id="5显示器分辨率设置">（5）<a href="https://elinux.org/RPiconfig">显示器分辨率设置</a></h2>
+
+<h2 id="6禁止屏幕休眠">（6）<a href="https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling">禁止屏幕休眠</a></h2>
+
+<p>禁止屏幕进入保护和关闭状态：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/etc/bash.bashrc
+
+setterm -blank 0 -powerdown 0
+</code></pre></div></div>
+
+<h2 id="7制作镜像">（7）<a href="https://www.jianshu.com/p/b3ce0d945c7a">制作镜像</a></h2>
+
+<h2 id="8enable-ssh">（8）enable ssh</h2>
+
+<ol>
+  <li>Enter <code class="highlighter-rouge">sudo raspi-config</code> in a terminal window</li>
+  <li>Select <code class="highlighter-rouge">Interfacing Options</code></li>
+  <li>Navigate to and select <code class="highlighter-rouge">SSH</code></li>
+  <li>Choose <code class="highlighter-rouge">Yes</code></li>
+  <li>Select <code class="highlighter-rouge">Ok</code></li>
+  <li>Choose <code class="highlighter-rouge">Finish</code></li>
+</ol>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>service sshd restart
+</code></pre></div></div>
+]]></content>
+      <categories>
+        
+          <category> Raspberry </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> Raspberry </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
       <title><![CDATA[QT图表解决方案-QCustomPlot]]></title>
       <url>/2017-12-28/QT%E5%9B%BE%E8%A1%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-QCustomPlot/</url>
       <content type="html"><![CDATA[<!-- more -->
