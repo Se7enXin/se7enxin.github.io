@@ -2,8 +2,150 @@
 <search>
   
     <entry>
+      <title><![CDATA[Raspberry GPIO —— WiringPi  交叉编译]]></title>
+      <url>/2018-04-12/Raspberry-GPIO-WiringPi-%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/</url>
+      <content type="html"><![CDATA[<!-- more -->
+
+<h1 id="一wiring-pi">一、<a href="http://wiringpi.com/">Wiring Pi</a></h1>
+
+<blockquote>
+  <p><strong><em>WiringPi</em></strong> is a <strong><em>PIN</em></strong> based GPIO access library written in C for the BCM2835, BCM2836 and BCM2837 SoC devices used in all <strong><em>Raspberry Pi</em></strong>.</p>
+</blockquote>
+
+<h1 id="二交叉编译">二、交叉编译</h1>
+
+<p>程序在虚拟机编译，在树莓派运行。</p>
+
+<h2 id="1toochain">（1）toochain</h2>
+
+<p>交叉编译工具链</p>
+
+<p>Download：</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git clone https://github.com/raspberrypi/tools.git
+</code></pre></div></div>
+
+<p>根据虚拟机配置添加环境变量到 /etc/profile末尾：</p>
+
+<p>32bit：</p>
+<blockquote>
+  <p>export PATH=$PATH:/your path/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin</p>
+</blockquote>
+
+<p>64bit：</p>
+<blockquote>
+  <p>export PATH=$PATH:/your path/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin</p>
+</blockquote>
+
+<p>更新环境变量：</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> /etc/profile
+</code></pre></div></div>
+<p>测试：</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>arm-linux-gnueabihf-gcc <span class="nt">-v</span>
+</code></pre></div></div>
+
+<h2 id="2download-and-install-on-raspberry">（2）Download and Install on Raspberry</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git clone git://git.drogon.net/wiringPi
+<span class="nv">$ </span><span class="nb">cd </span>wiringPi
+<span class="nv">$ </span>./build
+<span class="nv">$ </span>gpio <span class="nt">-v</span>
+</code></pre></div></div>
+
+<p>Test:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>gpio <span class="nt">-v</span>
+<span class="nv">$ </span>gpio readall
+</code></pre></div></div>
+
+<h2 id="3copy-wiring-pi-lib-to-vm">（3）copy Wiring Pi Lib to VM</h2>
+
+<p>Wiring Pi在Raspberry上安装后，会在 /usr/local/lib 下生成lib文件 <strong><em>libwiringPi.so</em></strong> 、<strong><em>libwiringPiDev.so</em></strong>; 在 /usr/local/include 下生成 <strong><em>wiringPi.h</em></strong>。将Raspberry中的lib、.h拷贝到VM中。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>文件名</th>
+      <th>Raspberry</th>
+      <th>VM</th>
+      <th>执行操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>libwiringPi.so、libwiringPiDev.so</td>
+      <td>/usr/local/lib</td>
+      <td>your wiringPiLib path</td>
+      <td>copy</td>
+    </tr>
+    <tr>
+      <td>wiringPi.h</td>
+      <td>/usr/local/include</td>
+      <td>your wiringPiLib path</td>
+      <td>copy</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="4compile-on-vm">（4）compile on VM</h2>
+
+<p>demo</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+#include &lt;wiringPi.h&gt;
+</span>
+<span class="cp">#define TEST_GPIO  24
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">wiringPiSetup</span><span class="p">();</span>
+    <span class="n">pinMode</span><span class="p">(</span><span class="n">TEST_GPIO</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+
+    <span class="k">for</span><span class="p">(;;)</span>
+    <span class="p">{</span>
+        <span class="n">digitalWrite</span><span class="p">(</span><span class="n">TEST_GPIO</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span> <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+        <span class="n">digitalWrite</span><span class="p">(</span><span class="n">TEST_GPIO</span><span class="p">,</span>  <span class="n">LOW</span><span class="p">);</span> <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>makefile</p>
+
+<div class="language-makefile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">src</span> <span class="o">+=</span> ./gpio.c
+<span class="nv">target</span> <span class="o">=</span> ./gpio
+
+<span class="nv">cc</span>  <span class="o">=</span> arm-linux-gcc
+
+<span class="nv">obj</span> <span class="o">=</span> <span class="err">$</span><span class="o">(</span>src:%.c<span class="o">=</span>%.o<span class="o">)</span>
+
+<span class="nl">$(target)</span><span class="o">:</span><span class="nf">$(obj)</span>
+    <span class="err">$(cc)</span> <span class="err">$^</span> <span class="err">-o</span> <span class="err">$@</span> <span class="err">$(cflags)</span> <span class="err">$(ldflags)</span> <span class="err">-I/your</span> <span class="err">wiringPiLib</span> <span class="err">path</span> <span class="err">-L/your</span> <span class="err">wiringPiLib</span> <span class="err">path</span> <span class="err">-lwiringPi</span> <span class="err">-lwiringPiDev</span> <span class="err">-lpthread</span> <span class="err">-lrt</span> <span class="err">-lm</span> <span class="err">-lcrypt</span>
+<span class="nl">%.o</span><span class="o">:</span><span class="nf">%.c</span>
+    <span class="err">$(cc)</span> <span class="err">-c</span> <span class="err">$&lt;</span> <span class="err">-o</span> <span class="err">$@</span> <span class="err">$(cflags)</span> <span class="err">$(cppflags)</span> <span class="err">-I/your</span> <span class="err">wiringPiLib</span> <span class="err">path</span> <span class="err">-L/your</span> <span class="err">wiringPiLib</span> <span class="err">path</span> <span class="err">-lwiringPi</span> <span class="err">-lwiringPiDev</span> <span class="err">-lpthread</span> <span class="err">-lrt</span> <span class="err">-lm</span> <span class="err">-lcrypt</span>
+
+<span class="nl">.phony</span><span class="o">:</span><span class="nf">clean</span>
+<span class="nl">clean</span><span class="o">:</span>
+    <span class="err">rm</span> <span class="err">*.o</span> <span class="err">$(obj)</span> <span class="err">$(target)</span> <span class="err">-fr</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>-I和-L分别指定了需要include的.h路径和需要链接的lib路径</p>
+</blockquote>
+]]></content>
+      <categories>
+        
+          <category> Raspberry </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> Raspberry </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
       <title><![CDATA[Raspberry in common use]]></title>
-      <url>/2018-03-14/Raspberry/</url>
+      <url>/2018-03-14/Raspberry-in-common-use/</url>
       <content type="html"><![CDATA[<!-- more -->
 
 <h1 id="一raspberry">一、<a href="https://www.raspberrypi.org/">Raspberry</a></h1>

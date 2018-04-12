@@ -1,4 +1,128 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://0.0.0.0:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2018-03-14T14:48:45+08:00</updated><id>http://0.0.0.0:4000/</id><title type="html">Se7enXin</title><subtitle>佛系程序员</subtitle><author><name>Se7enXin</name></author><entry><title type="html">Raspberry in common use</title><link href="http://0.0.0.0:4000/2018-03-14/Raspberry/" rel="alternate" type="text/html" title="Raspberry in common use" /><published>2018-03-14T00:00:00+08:00</published><updated>2018-03-14T00:00:00+08:00</updated><id>http://0.0.0.0:4000/2018-03-14/Raspberry</id><content type="html" xml:base="http://0.0.0.0:4000/2018-03-14/Raspberry/">&lt;!-- more --&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://0.0.0.0:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2018-04-12T17:44:55+08:00</updated><id>http://0.0.0.0:4000/</id><title type="html">Se7enXin</title><subtitle>佛系程序员</subtitle><author><name>Se7enXin</name></author><entry><title type="html">Raspberry GPIO —— WiringPi 交叉编译</title><link href="http://0.0.0.0:4000/2018-04-12/Raspberry-GPIO-WiringPi-%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/" rel="alternate" type="text/html" title="Raspberry GPIO —— WiringPi  交叉编译" /><published>2018-04-12T00:00:00+08:00</published><updated>2018-04-12T00:00:00+08:00</updated><id>http://0.0.0.0:4000/2018-04-12/Raspberry-GPIO%E2%80%94%E2%80%94WiringPi-%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91</id><content type="html" xml:base="http://0.0.0.0:4000/2018-04-12/Raspberry-GPIO-WiringPi-%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/">&lt;!-- more --&gt;
+
+&lt;h1 id=&quot;一wiring-pi&quot;&gt;一、&lt;a href=&quot;http://wiringpi.com/&quot;&gt;Wiring Pi&lt;/a&gt;&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;&lt;em&gt;WiringPi&lt;/em&gt;&lt;/strong&gt; is a &lt;strong&gt;&lt;em&gt;PIN&lt;/em&gt;&lt;/strong&gt; based GPIO access library written in C for the BCM2835, BCM2836 and BCM2837 SoC devices used in all &lt;strong&gt;&lt;em&gt;Raspberry Pi&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;二交叉编译&quot;&gt;二、交叉编译&lt;/h1&gt;
+
+&lt;p&gt;程序在虚拟机编译，在树莓派运行。&lt;/p&gt;
+
+&lt;h2 id=&quot;1toochain&quot;&gt;（1）toochain&lt;/h2&gt;
+
+&lt;p&gt;交叉编译工具链&lt;/p&gt;
+
+&lt;p&gt;Download：&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git clone https://github.com/raspberrypi/tools.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;根据虚拟机配置添加环境变量到 /etc/profile末尾：&lt;/p&gt;
+
+&lt;p&gt;32bit：&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;export PATH=$PATH:/your path/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;64bit：&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;export PATH=$PATH:/your path/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;更新环境变量：&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; /etc/profile
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;测试：&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;arm-linux-gnueabihf-gcc &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;2download-and-install-on-raspberry&quot;&gt;（2）Download and Install on Raspberry&lt;/h2&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git clone git://git.drogon.net/wiringPi
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;wiringPi
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./build
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gpio &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Test:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gpio &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gpio readall
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;3copy-wiring-pi-lib-to-vm&quot;&gt;（3）copy Wiring Pi Lib to VM&lt;/h2&gt;
+
+&lt;p&gt;Wiring Pi在Raspberry上安装后，会在 /usr/local/lib 下生成lib文件 &lt;strong&gt;&lt;em&gt;libwiringPi.so&lt;/em&gt;&lt;/strong&gt; 、&lt;strong&gt;&lt;em&gt;libwiringPiDev.so&lt;/em&gt;&lt;/strong&gt;; 在 /usr/local/include 下生成 &lt;strong&gt;&lt;em&gt;wiringPi.h&lt;/em&gt;&lt;/strong&gt;。将Raspberry中的lib、.h拷贝到VM中。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;文件名&lt;/th&gt;
+      &lt;th&gt;Raspberry&lt;/th&gt;
+      &lt;th&gt;VM&lt;/th&gt;
+      &lt;th&gt;执行操作&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;libwiringPi.so、libwiringPiDev.so&lt;/td&gt;
+      &lt;td&gt;/usr/local/lib&lt;/td&gt;
+      &lt;td&gt;your wiringPiLib path&lt;/td&gt;
+      &lt;td&gt;copy&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;wiringPi.h&lt;/td&gt;
+      &lt;td&gt;/usr/local/include&lt;/td&gt;
+      &lt;td&gt;your wiringPiLib path&lt;/td&gt;
+      &lt;td&gt;copy&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;4compile-on-vm&quot;&gt;（4）compile on VM&lt;/h2&gt;
+
+&lt;p&gt;demo&lt;/p&gt;
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;wiringPi.h&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#define TEST_GPIO  24
+&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;wiringPiSetup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;pinMode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TEST_GPIO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OUTPUT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(;;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;digitalWrite&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TEST_GPIO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HIGH&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;digitalWrite&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TEST_GPIO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;LOW&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;makefile&lt;/p&gt;
+
+&lt;div class=&quot;language-makefile highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;src&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; ./gpio.c
+&lt;span class=&quot;nv&quot;&gt;target&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; ./gpio
+
+&lt;span class=&quot;nv&quot;&gt;cc&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; arm-linux-gcc
+
+&lt;span class=&quot;nv&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;src:%.c&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;%.o&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;nl&quot;&gt;$(target)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;$(obj)&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;$(cc)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$^&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$@&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$(cflags)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$(ldflags)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;-I/your&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;wiringPiLib&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;-L/your&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;wiringPiLib&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;-lwiringPi&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;-lwiringPiDev&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;-lpthread&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;-lrt&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;-lm&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;-lcrypt&lt;/span&gt;
+&lt;span class=&quot;nl&quot;&gt;%.o&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;%.c&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;$(cc)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&amp;lt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$@&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$(cflags)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$(cppflags)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;-I/your&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;wiringPiLib&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;-L/your&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;wiringPiLib&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;-lwiringPi&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;-lwiringPiDev&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;-lpthread&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;-lrt&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;-lm&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;-lcrypt&lt;/span&gt;
+
+&lt;span class=&quot;nl&quot;&gt;.phony&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;clean&lt;/span&gt;
+&lt;span class=&quot;nl&quot;&gt;clean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;*.o&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$(obj)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$(target)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;-fr&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;-I和-L分别指定了需要include的.h路径和需要链接的lib路径&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>Se7enXin</name></author><category term="Raspberry" /><summary type="html">一、Wiring Pi WiringPi is a PIN based GPIO access library written in C for the BCM2835, BCM2836 and BCM2837 SoC devices used in all Raspberry Pi. 二、交叉编译 程序在虚拟机编译，在树莓派运行。 （1）toochain 交叉编译工具链 Download： $ git clone https://github.com/raspberrypi/tools.git 根据虚拟机配置添加环境变量到 /etc/profile末尾： 32bit： export PATH=$PATH:/your path/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin 64bit： export PATH=$PATH:/your path/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin 更新环境变量： source /etc/profile 测试： $ arm-linux-gnueabihf-gcc -v （2）Download and Install on Raspberry $ git clone git://git.drogon.net/wiringPi $ cd wiringPi $ ./build $ gpio -v Test: $ gpio -v $ gpio readall （3）copy Wiring Pi Lib to VM Wiring Pi在Raspberry上安装后，会在 /usr/local/lib 下生成lib文件 libwiringPi.so 、libwiringPiDev.so; 在 /usr/local/include 下生成 wiringPi.h。将Raspberry中的lib、.h拷贝到VM中。 文件名 Raspberry VM 执行操作 libwiringPi.so、libwiringPiDev.so /usr/local/lib your wiringPiLib path copy wiringPi.h /usr/local/include your wiringPiLib path copy （4）compile on VM demo #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;wiringPi.h&amp;gt; #define TEST_GPIO 24 int main(void) { wiringPiSetup(); pinMode(TEST_GPIO, OUTPUT); for(;;) { digitalWrite(TEST_GPIO, HIGH); delay(500); digitalWrite(TEST_GPIO, LOW); delay(500); } return 0; } makefile src += ./gpio.c target = ./gpio cc = arm-linux-gcc obj = $(src:%.c=%.o) $(target):$(obj) $(cc) $^ -o $@ $(cflags) $(ldflags) -I/your wiringPiLib path -L/your wiringPiLib path -lwiringPi -lwiringPiDev -lpthread -lrt -lm -lcrypt %.o:%.c $(cc) -c $&amp;lt; -o $@ $(cflags) $(cppflags) -I/your wiringPiLib path -L/your wiringPiLib path -lwiringPi -lwiringPiDev -lpthread -lrt -lm -lcrypt .phony:clean clean: rm *.o $(obj) $(target) -fr -I和-L分别指定了需要include的.h路径和需要链接的lib路径</summary></entry><entry><title type="html">Raspberry in common use</title><link href="http://0.0.0.0:4000/2018-03-14/Raspberry-in-common-use/" rel="alternate" type="text/html" title="Raspberry in common use" /><published>2018-03-14T00:00:00+08:00</published><updated>2018-03-14T00:00:00+08:00</updated><id>http://0.0.0.0:4000/2018-03-14/Raspberry-in-common-use</id><content type="html" xml:base="http://0.0.0.0:4000/2018-03-14/Raspberry-in-common-use/">&lt;!-- more --&gt;
 
 &lt;h1 id=&quot;一raspberry&quot;&gt;一、&lt;a href=&quot;https://www.raspberrypi.org/&quot;&gt;Raspberry&lt;/a&gt;&lt;/h1&gt;
 
