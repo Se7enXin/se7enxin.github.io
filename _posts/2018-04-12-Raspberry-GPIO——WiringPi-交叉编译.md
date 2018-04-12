@@ -111,3 +111,7 @@ clean:
 ```
 
 > -I和-L分别指定了需要include的.h路径和需要链接的lib路径
+
+# 三、Raspberry 40 Pin 引脚对照表（图片摘自树莓派实验室）
+
+![CEMt54.png](https://s1.ax1x.com/2018/04/12/CEMt54.png)

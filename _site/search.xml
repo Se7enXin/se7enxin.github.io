@@ -129,6 +129,10 @@
 <blockquote>
   <p>-I和-L分别指定了需要include的.h路径和需要链接的lib路径</p>
 </blockquote>
+
+<h1 id="三raspberry-40-pin-引脚对照表图片摘自树莓派实验室">三、Raspberry 40 Pin 引脚对照表（图片摘自树莓派实验室）</h1>
+
+<p><img src="https://s1.ax1x.com/2018/04/12/CEMt54.png" alt="CEMt54.png" /></p>
 ]]></content>
       <categories>
         
