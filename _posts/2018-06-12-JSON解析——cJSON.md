@@ -12,11 +12,12 @@ tags:
 
 ### [cJSON Source Code](https://github.com/DaveGamble/cJSON)
 
+> cJSON 是一个以ANSI C (C89) 标准编写的轻量级JSON解析库。
+
 ### [Introducing JSON](http://www.json.org/json-zh.html)
 
 ### [JSON在线解析](https://www.json.cn/)
 
-> cJSON 是一个以ANSI C (C89) 标准编写的轻量级JSON解析库。
 
 # 二、How To Use
 
