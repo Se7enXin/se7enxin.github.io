@@ -2,6 +2,144 @@
 <search>
   
     <entry>
+      <title><![CDATA[JSON解析——cJSON]]></title>
+      <url>/2018-06-12/JSON%E8%A7%A3%E6%9E%90-cJSON/</url>
+      <content type="html"><![CDATA[<h1 id="一简介">一、简介</h1>
+
+<h3 id="cjson-source-code"><a href="https://github.com/DaveGamble/cJSON">cJSON Source Code</a></h3>
+
+<blockquote>
+  <p>cJSON 是一个以ANSI C (C89) 标准编写的轻量级JSON解析库。</p>
+</blockquote>
+
+<h1 id="二how-to-use">二、How To Use</h1>
+
+<p>cJSON包含两个文件：<code class="highlighter-rouge">cJSON.c</code>、<code class="highlighter-rouge">cJSON.h</code>。在代码中include<code class="highlighter-rouge">cJSON.h</code>即可。例如：</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include "cJSON.h"
+</span></code></pre></div></div>
+
+<p>目录结构：</p>
+
+<p><img src="https://i.imgur.com/CzZhFcP.png" alt="cJSON-1" /></p>
+
+<h4 id="cjson_testc">cJSON_test.c:</h4>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include "cJSON.h"
+</span>
+<span class="cp">#define JSON_FILE_PATH    "./test.json"
+#define JSON_FILE_SIZE    1024
+</span>
+<span class="kt">int</span> <span class="nf">readValueFromFile</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">fileName</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">buff</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="kt">FILE</span> <span class="o">*</span><span class="n">fp</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="s">"r"</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">fp</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Unable to open file %s"</span><span class="p">,</span> <span class="n">fileName</span><span class="p">);</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">fread</span><span class="p">(</span><span class="n">buff</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">),</span> <span class="n">len</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**
+ * [printJson 遍历JSON]
+ */</span>
+<span class="kt">void</span> <span class="nf">printJson</span><span class="p">(</span><span class="n">cJSON</span> <span class="o">*</span> <span class="n">root</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">500</span><span class="p">];</span>
+    <span class="n">memset</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">));</span>
+    <span class="c1">//遍历最外层json键值对
+</span>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">cJSON_GetArraySize</span><span class="p">(</span><span class="n">root</span><span class="p">);</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cJSON</span> <span class="o">*</span> <span class="n">item</span> <span class="o">=</span> <span class="n">cJSON_GetArrayItem</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+        <span class="c1">//如果对应键的值仍为cJSON_Object就递归调用printJson
+</span>        <span class="k">if</span><span class="p">(</span><span class="n">cJSON_Object</span> <span class="o">==</span> <span class="n">item</span><span class="o">-&gt;</span><span class="n">type</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printJson</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="c1">//值不为json对象就直接打印出键和值
+</span>        <span class="k">else</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"%s:%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">item</span><span class="o">-&gt;</span><span class="n">string</span><span class="p">,</span> <span class="n">cJSON_Print</span><span class="p">(</span><span class="n">item</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">cJSON</span> <span class="o">*</span><span class="n">root</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="n">cJSON</span> <span class="o">*</span><span class="n">item</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span><span class="c1">//cjson对象
+</span>
+    <span class="kt">char</span> <span class="n">jsonStr</span><span class="p">[</span><span class="n">JSON_FILE_SIZE</span><span class="p">];</span>
+    <span class="n">memset</span><span class="p">(</span><span class="n">jsonStr</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">jsonStr</span><span class="p">));</span>
+    <span class="n">readValueFromFile</span><span class="p">(</span><span class="n">JSON_FILE_PATH</span><span class="p">,</span> <span class="n">jsonStr</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">jsonStr</span><span class="p">));</span>
+    <span class="c1">// printf("jsonStr=%s\n", jsonStr);
+</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="n">cJSON_Parse</span><span class="p">(</span><span class="n">jsonStr</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">root</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Error before: [%s]</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">cJSON_GetErrorPtr</span><span class="p">());</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="s">"print all:"</span><span class="p">);</span>
+        <span class="n">printJson</span><span class="p">(</span><span class="n">root</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="json">JSON:</h4>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+    <span class="s2">"station_name"</span><span class="p">:</span> <span class="s2">"Module"</span><span class="p">,</span>
+    <span class="s2">"structure"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"module"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"num"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">"rule"</span><span class="p">:</span> <span class="s2">"023M"</span><span class="p">,</span>
+            <span class="s2">"sn_len"</span><span class="p">:</span> <span class="mi">24</span>
+        <span class="p">},</span>
+        <span class="s2">"cell"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"num"</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+            <span class="s2">"rule"</span><span class="p">:</span> <span class="s2">"NULL"</span><span class="p">,</span>
+            <span class="s2">"sn_len"</span><span class="p">:</span> <span class="mi">14</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="输出结果">输出结果：</h4>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print all:
+station_name:<span class="s2">"Module"</span>
+num:1
+rule:<span class="s2">"023M"</span>
+sn_len:24
+num:7
+rule:<span class="s2">"NULL"</span>
+sn_len:14
+</code></pre></div></div>
+]]></content>
+      <categories>
+        
+          <category> JSON </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> JSON </tag>
+        
+          <tag> C </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
       <title><![CDATA[Raspberry GPIO —— WiringPi  交叉编译]]></title>
       <url>/2018-04-12/Raspberry-GPIO-WiringPi-%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/</url>
       <content type="html"><![CDATA[<!-- more -->
