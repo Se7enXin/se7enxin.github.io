@@ -4,9 +4,11 @@
     <entry>
       <title><![CDATA[DIY一个炫酷的像素时钟]]></title>
       <url>/2019-05-29/%E5%83%8F%E7%B4%A0%E6%97%B6%E9%92%9F/</url>
-      <content type="html"><![CDATA[<h1 id="一介绍">一、介绍</h1>
+      <content type="html"><![CDATA[<h2 id="一介绍">一、介绍</h2>
 
-<h3 id="官网docs"><a href="https://docs.blueforcer.de/#/v2/">官网Docs</a></h3>
+<h4 id="1官网docs">1、<a href="https://docs.blueforcer.de/#/v2/">官网Docs</a></h4>
+
+<h4 id="2简介">2、简介</h4>
 
 <p><img src="/assets/images/wifi像素时钟介绍.PNG" alt="wifi像素时钟介绍" /></p>
 
@@ -16,20 +18,101 @@
 客户端收到后将时间信息转换为8x32柔性屏对应的指令并发送，柔性屏收到后显示
 </code></pre></div></div>
 
-<h1 id="二配件清单">二、配件清单</h1>
+<h2 id="二配件清单">二、配件清单</h2>
 
-<h2 id="1esp8266-wifi模块-cp2102-esp-12e2783">1、ESP8266 WIFI模块 CP2102 ESP-12E（￥27.83）</h2>
+<h3 id="1esp8266-wifi模块-cp2102-esp-12e2783">1、ESP8266 WIFI模块 CP2102 ESP-12E（￥27.83）</h3>
 
-<h2 id="28x32-ws2812b-柔性软屏114">2、8x32 WS2812B 柔性软屏（￥114）</h2>
+<h3 id="28x32-ws2812b-柔性软屏114">2、8x32 WS2812B 柔性软屏（￥114）</h3>
 
 <p>说起这个柔性软屏就很厉害了，它不需要驱动，一共256个点，每个点都带有一块芯片和LED，
 平均算下来，芯片+LED+电容不到5毛钱</p>
 
-<h2 id="3外壳30">3、外壳（￥30）</h2>
+<h3 id="3外壳30">3、外壳（￥30）</h3>
+
+<p>如何封装每个人都有自己的喜好，我这里选择的低成本亚克力外壳</p>
+
+<p>在淘宝找店家做的，最好多问几家，有的给的价格虚高</p>
 
 <p><img src="/assets/images/黑色透明外壳.PNG" alt="黑色透明外壳" /></p>
 
-<h2 id="4树莓派可选">4、树莓派（可选）</h2>
+<h3 id="4树莓派可选">4、树莓派（可选）</h3>
+
+<h3 id="53d打印的光栅可选">5、3D打印的光栅（可选）</h3>
+
+<p>光栅建议选择深色不透明材料</p>
+
+<p><a href="https://www.thingiverse.com/thing:2791276">3D图纸下载</a></p>
+
+<h2 id="三软件">三、软件</h2>
+
+<h3 id="1controller">1、Controller</h3>
+
+<h4 id="1下载visual-studio-code安装platformio">（1）下载Visual Studio Code，安装Platform.IO</h4>
+
+<p><a href="https://platformio.org/install/ide?install=vscode">How to install Platform.IO</a></p>
+
+<h4 id="2下载wifi模块固件并在platformio中打开">（2）下载wifi模块固件，并在Platform.IO中打开</h4>
+
+<p><a href="https://github.com/awtrix/AWTRIX2.0-Controller">Download AWTRIX2.0-Controller</a></p>
+
+<p><img src="/assets/images/Snipaste_2019-05-29_17-50-26.png" alt="" /></p>
+
+<p><img src="/assets/images/Snipaste_2019-05-29_17-52-41.png" alt="" /></p>
+
+<h4 id="3-设置服务器信息">(3) 设置服务器信息</h4>
+
+<p>打开<code class="highlighter-rouge">awtrix-conf.h</code>，修改以下内容：</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Wifi Config
+</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">ssid</span> <span class="o">=</span> <span class="s">"YourSSID"</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">password</span> <span class="o">=</span> <span class="s">"YourPassword"</span><span class="p">;</span>
+<span class="kt">char</span> <span class="o">*</span><span class="n">awtrix_server</span> <span class="o">=</span> <span class="s">"192.168.178.39"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ssid</td>
+      <td>wifi名称</td>
+    </tr>
+    <tr>
+      <td>password</td>
+      <td>wifi密码</td>
+    </tr>
+    <tr>
+      <td>awtrix_server</td>
+      <td>服务器IP</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="4-连接wifi模块刷写固件">(4) 连接wifi模块，刷写固件</h4>
+
+<p>wifi连接micro USB线后，在<code class="highlighter-rouge">Platform.IO</code>的<code class="highlighter-rouge">Devices</code>中，应该会找到对应的设备，如果没有，可以尝试安装下面这个驱动：</p>
+
+<p><a href="https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers">驱动</a></p>
+
+<p><code class="highlighter-rouge">Devices</code>中找到对应设备后，点击刷写按钮完成刷写</p>
+
+<p><img src="/assets/images/Snipaste_2019-05-29_18-08-59.png" alt="" /></p>
+
+<h3 id="2server">2、Server</h3>
+
+<p>Server可以运行在任意平台，只要支持Java8就可以，对别的没有要求。</p>
+
+<p>Server的部署见<a href="https://docs.blueforcer.de/#/v2/host">官方文档</a></p>
+
+<h2 id="四组装">四、组装</h2>
+
+<h2 id="五演示">五、演示</h2>
+
+<h2 id="六">六、</h2>
 
 ]]></content>
       <categories>

@@ -1,6 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://0.0.0.0:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2019-05-29T15:56:20+08:00</updated><id>http://0.0.0.0:4000/</id><title type="html">Se7enXin</title><subtitle>佛系程序员</subtitle><author><name>Se7enXin</name></author><entry><title type="html">DIY一个炫酷的像素时钟</title><link href="http://0.0.0.0:4000/2019-05-29/%E5%83%8F%E7%B4%A0%E6%97%B6%E9%92%9F/" rel="alternate" type="text/html" title="DIY一个炫酷的像素时钟" /><published>2019-05-29T00:00:00+08:00</published><updated>2019-05-29T00:00:00+08:00</updated><id>http://0.0.0.0:4000/2019-05-29/%E5%83%8F%E7%B4%A0%E6%97%B6%E9%92%9F</id><content type="html" xml:base="http://0.0.0.0:4000/2019-05-29/%E5%83%8F%E7%B4%A0%E6%97%B6%E9%92%9F/">&lt;h1 id=&quot;一介绍&quot;&gt;一、介绍&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://0.0.0.0:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2019-05-29T18:14:47+08:00</updated><id>http://0.0.0.0:4000/</id><title type="html">Se7enXin</title><subtitle>佛系程序员</subtitle><author><name>Se7enXin</name></author><entry><title type="html">DIY一个炫酷的像素时钟</title><link href="http://0.0.0.0:4000/2019-05-29/%E5%83%8F%E7%B4%A0%E6%97%B6%E9%92%9F/" rel="alternate" type="text/html" title="DIY一个炫酷的像素时钟" /><published>2019-05-29T00:00:00+08:00</published><updated>2019-05-29T00:00:00+08:00</updated><id>http://0.0.0.0:4000/2019-05-29/%E5%83%8F%E7%B4%A0%E6%97%B6%E9%92%9F</id><content type="html" xml:base="http://0.0.0.0:4000/2019-05-29/%E5%83%8F%E7%B4%A0%E6%97%B6%E9%92%9F/">&lt;h2 id=&quot;一介绍&quot;&gt;一、介绍&lt;/h2&gt;
 
-&lt;h3 id=&quot;官网docs&quot;&gt;&lt;a href=&quot;https://docs.blueforcer.de/#/v2/&quot;&gt;官网Docs&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id=&quot;1官网docs&quot;&gt;1、&lt;a href=&quot;https://docs.blueforcer.de/#/v2/&quot;&gt;官网Docs&lt;/a&gt;&lt;/h4&gt;
+
+&lt;h4 id=&quot;2简介&quot;&gt;2、简介&lt;/h4&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/wifi像素时钟介绍.PNG&quot; alt=&quot;wifi像素时钟介绍&quot; /&gt;&lt;/p&gt;
 
@@ -10,20 +12,101 @@
 客户端收到后将时间信息转换为8x32柔性屏对应的指令并发送，柔性屏收到后显示
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h1 id=&quot;二配件清单&quot;&gt;二、配件清单&lt;/h1&gt;
+&lt;h2 id=&quot;二配件清单&quot;&gt;二、配件清单&lt;/h2&gt;
 
-&lt;h2 id=&quot;1esp8266-wifi模块-cp2102-esp-12e2783&quot;&gt;1、ESP8266 WIFI模块 CP2102 ESP-12E（￥27.83）&lt;/h2&gt;
+&lt;h3 id=&quot;1esp8266-wifi模块-cp2102-esp-12e2783&quot;&gt;1、ESP8266 WIFI模块 CP2102 ESP-12E（￥27.83）&lt;/h3&gt;
 
-&lt;h2 id=&quot;28x32-ws2812b-柔性软屏114&quot;&gt;2、8x32 WS2812B 柔性软屏（￥114）&lt;/h2&gt;
+&lt;h3 id=&quot;28x32-ws2812b-柔性软屏114&quot;&gt;2、8x32 WS2812B 柔性软屏（￥114）&lt;/h3&gt;
 
 &lt;p&gt;说起这个柔性软屏就很厉害了，它不需要驱动，一共256个点，每个点都带有一块芯片和LED，
 平均算下来，芯片+LED+电容不到5毛钱&lt;/p&gt;
 
-&lt;h2 id=&quot;3外壳30&quot;&gt;3、外壳（￥30）&lt;/h2&gt;
+&lt;h3 id=&quot;3外壳30&quot;&gt;3、外壳（￥30）&lt;/h3&gt;
+
+&lt;p&gt;如何封装每个人都有自己的喜好，我这里选择的低成本亚克力外壳&lt;/p&gt;
+
+&lt;p&gt;在淘宝找店家做的，最好多问几家，有的给的价格虚高&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/黑色透明外壳.PNG&quot; alt=&quot;黑色透明外壳&quot; /&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;4树莓派可选&quot;&gt;4、树莓派（可选）&lt;/h2&gt;</content><author><name>Se7enXin</name></author><category term="Raspberry DIY" /><summary type="html">一、介绍 官网Docs wifi模块作为客户端与服务器连接同一wifi 客户端尝试与服务器建立连接，成功建立连接后客户端向服务器发出信号 服务器收到信号后向客户端发送时间相关的信息， 客户端收到后将时间信息转换为8x32柔性屏对应的指令并发送，柔性屏收到后显示 二、配件清单 1、ESP8266 WIFI模块 CP2102 ESP-12E（￥27.83） 2、8x32 WS2812B 柔性软屏（￥114） 说起这个柔性软屏就很厉害了，它不需要驱动，一共256个点，每个点都带有一块芯片和LED， 平均算下来，芯片+LED+电容不到5毛钱 3、外壳（￥30） 4、树莓派（可选）</summary></entry><entry><title type="html">JSON解析——cJSON</title><link href="http://0.0.0.0:4000/2018-06-12/JSON%E8%A7%A3%E6%9E%90-cJSON/" rel="alternate" type="text/html" title="JSON解析——cJSON" /><published>2018-06-12T00:00:00+08:00</published><updated>2018-06-12T00:00:00+08:00</updated><id>http://0.0.0.0:4000/2018-06-12/JSON%E8%A7%A3%E6%9E%90%E2%80%94%E2%80%94cJSON</id><content type="html" xml:base="http://0.0.0.0:4000/2018-06-12/JSON%E8%A7%A3%E6%9E%90-cJSON/">&lt;h1 id=&quot;一简介&quot;&gt;一、简介&lt;/h1&gt;
+&lt;h3 id=&quot;4树莓派可选&quot;&gt;4、树莓派（可选）&lt;/h3&gt;
+
+&lt;h3 id=&quot;53d打印的光栅可选&quot;&gt;5、3D打印的光栅（可选）&lt;/h3&gt;
+
+&lt;p&gt;光栅建议选择深色不透明材料&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.thingiverse.com/thing:2791276&quot;&gt;3D图纸下载&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;三软件&quot;&gt;三、软件&lt;/h2&gt;
+
+&lt;h3 id=&quot;1controller&quot;&gt;1、Controller&lt;/h3&gt;
+
+&lt;h4 id=&quot;1下载visual-studio-code安装platformio&quot;&gt;（1）下载Visual Studio Code，安装Platform.IO&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://platformio.org/install/ide?install=vscode&quot;&gt;How to install Platform.IO&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;2下载wifi模块固件并在platformio中打开&quot;&gt;（2）下载wifi模块固件，并在Platform.IO中打开&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/awtrix/AWTRIX2.0-Controller&quot;&gt;Download AWTRIX2.0-Controller&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/Snipaste_2019-05-29_17-50-26.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/Snipaste_2019-05-29_17-52-41.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;3-设置服务器信息&quot;&gt;(3) 设置服务器信息&lt;/h4&gt;
+
+&lt;p&gt;打开&lt;code class=&quot;highlighter-rouge&quot;&gt;awtrix-conf.h&lt;/code&gt;，修改以下内容：&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Wifi Config
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ssid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;YourSSID&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;YourPassword&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;awtrix_server&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;192.168.178.39&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt; &lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;ssid&lt;/td&gt;
+      &lt;td&gt;wifi名称&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;password&lt;/td&gt;
+      &lt;td&gt;wifi密码&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;awtrix_server&lt;/td&gt;
+      &lt;td&gt;服务器IP&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&quot;4-连接wifi模块刷写固件&quot;&gt;(4) 连接wifi模块，刷写固件&lt;/h4&gt;
+
+&lt;p&gt;wifi连接micro USB线后，在&lt;code class=&quot;highlighter-rouge&quot;&gt;Platform.IO&lt;/code&gt;的&lt;code class=&quot;highlighter-rouge&quot;&gt;Devices&lt;/code&gt;中，应该会找到对应的设备，如果没有，可以尝试安装下面这个驱动：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers&quot;&gt;驱动&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Devices&lt;/code&gt;中找到对应设备后，点击刷写按钮完成刷写&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/Snipaste_2019-05-29_18-08-59.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;2server&quot;&gt;2、Server&lt;/h3&gt;
+
+&lt;p&gt;Server可以运行在任意平台，只要支持Java8就可以，对别的没有要求。&lt;/p&gt;
+
+&lt;p&gt;Server的部署见&lt;a href=&quot;https://docs.blueforcer.de/#/v2/host&quot;&gt;官方文档&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;四组装&quot;&gt;四、组装&lt;/h2&gt;
+
+&lt;h2 id=&quot;五演示&quot;&gt;五、演示&lt;/h2&gt;
+
+&lt;h2 id=&quot;六&quot;&gt;六、&lt;/h2&gt;</content><author><name>Se7enXin</name></author><category term="Raspberry DIY" /><summary type="html">一、介绍 1、官网Docs 2、简介 wifi模块作为客户端与服务器连接同一wifi 客户端尝试与服务器建立连接，成功建立连接后客户端向服务器发出信号 服务器收到信号后向客户端发送时间相关的信息， 客户端收到后将时间信息转换为8x32柔性屏对应的指令并发送，柔性屏收到后显示 二、配件清单 1、ESP8266 WIFI模块 CP2102 ESP-12E（￥27.83） 2、8x32 WS2812B 柔性软屏（￥114） 说起这个柔性软屏就很厉害了，它不需要驱动，一共256个点，每个点都带有一块芯片和LED， 平均算下来，芯片+LED+电容不到5毛钱 3、外壳（￥30） 如何封装每个人都有自己的喜好，我这里选择的低成本亚克力外壳 在淘宝找店家做的，最好多问几家，有的给的价格虚高 4、树莓派（可选） 5、3D打印的光栅（可选） 光栅建议选择深色不透明材料 3D图纸下载 三、软件 1、Controller （1）下载Visual Studio Code，安装Platform.IO How to install Platform.IO （2）下载wifi模块固件，并在Platform.IO中打开 Download AWTRIX2.0-Controller (3) 设置服务器信息 打开awtrix-conf.h，修改以下内容： // Wifi Config const char *ssid = &quot;YourSSID&quot;; const char *password = &quot;YourPassword&quot;; char *awtrix_server = &quot;192.168.178.39&quot;;     ssid wifi名称 password wifi密码 awtrix_server 服务器IP (4) 连接wifi模块，刷写固件 wifi连接micro USB线后，在Platform.IO的Devices中，应该会找到对应的设备，如果没有，可以尝试安装下面这个驱动： 驱动 Devices中找到对应设备后，点击刷写按钮完成刷写 2、Server Server可以运行在任意平台，只要支持Java8就可以，对别的没有要求。 Server的部署见官方文档 四、组装 五、演示 六、</summary></entry><entry><title type="html">JSON解析——cJSON</title><link href="http://0.0.0.0:4000/2018-06-12/JSON%E8%A7%A3%E6%9E%90-cJSON/" rel="alternate" type="text/html" title="JSON解析——cJSON" /><published>2018-06-12T00:00:00+08:00</published><updated>2018-06-12T00:00:00+08:00</updated><id>http://0.0.0.0:4000/2018-06-12/JSON%E8%A7%A3%E6%9E%90%E2%80%94%E2%80%94cJSON</id><content type="html" xml:base="http://0.0.0.0:4000/2018-06-12/JSON%E8%A7%A3%E6%9E%90-cJSON/">&lt;h1 id=&quot;一简介&quot;&gt;一、简介&lt;/h1&gt;
 
 &lt;h3 id=&quot;cjson-source-code&quot;&gt;&lt;a href=&quot;https://github.com/DaveGamble/cJSON&quot;&gt;cJSON Source Code&lt;/a&gt;&lt;/h3&gt;
 
