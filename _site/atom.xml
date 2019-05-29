@@ -1,4 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://0.0.0.0:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2018-06-13T11:36:54+08:00</updated><id>http://0.0.0.0:4000/</id><title type="html">Se7enXin</title><subtitle>佛系程序员</subtitle><author><name>Se7enXin</name></author><entry><title type="html">JSON解析——cJSON</title><link href="http://0.0.0.0:4000/2018-06-12/JSON%E8%A7%A3%E6%9E%90-cJSON/" rel="alternate" type="text/html" title="JSON解析——cJSON" /><published>2018-06-12T00:00:00+08:00</published><updated>2018-06-12T00:00:00+08:00</updated><id>http://0.0.0.0:4000/2018-06-12/JSON%E8%A7%A3%E6%9E%90%E2%80%94%E2%80%94cJSON</id><content type="html" xml:base="http://0.0.0.0:4000/2018-06-12/JSON%E8%A7%A3%E6%9E%90-cJSON/">&lt;h1 id=&quot;一简介&quot;&gt;一、简介&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://0.0.0.0:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2019-05-29T15:56:20+08:00</updated><id>http://0.0.0.0:4000/</id><title type="html">Se7enXin</title><subtitle>佛系程序员</subtitle><author><name>Se7enXin</name></author><entry><title type="html">DIY一个炫酷的像素时钟</title><link href="http://0.0.0.0:4000/2019-05-29/%E5%83%8F%E7%B4%A0%E6%97%B6%E9%92%9F/" rel="alternate" type="text/html" title="DIY一个炫酷的像素时钟" /><published>2019-05-29T00:00:00+08:00</published><updated>2019-05-29T00:00:00+08:00</updated><id>http://0.0.0.0:4000/2019-05-29/%E5%83%8F%E7%B4%A0%E6%97%B6%E9%92%9F</id><content type="html" xml:base="http://0.0.0.0:4000/2019-05-29/%E5%83%8F%E7%B4%A0%E6%97%B6%E9%92%9F/">&lt;h1 id=&quot;一介绍&quot;&gt;一、介绍&lt;/h1&gt;
+
+&lt;h3 id=&quot;官网docs&quot;&gt;&lt;a href=&quot;https://docs.blueforcer.de/#/v2/&quot;&gt;官网Docs&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/wifi像素时钟介绍.PNG&quot; alt=&quot;wifi像素时钟介绍&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wifi模块作为客户端与服务器连接同一wifi
+客户端尝试与服务器建立连接，成功建立连接后客户端向服务器发出信号
+服务器收到信号后向客户端发送时间相关的信息，
+客户端收到后将时间信息转换为8x32柔性屏对应的指令并发送，柔性屏收到后显示
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;二配件清单&quot;&gt;二、配件清单&lt;/h1&gt;
+
+&lt;h2 id=&quot;1esp8266-wifi模块-cp2102-esp-12e2783&quot;&gt;1、ESP8266 WIFI模块 CP2102 ESP-12E（￥27.83）&lt;/h2&gt;
+
+&lt;h2 id=&quot;28x32-ws2812b-柔性软屏114&quot;&gt;2、8x32 WS2812B 柔性软屏（￥114）&lt;/h2&gt;
+
+&lt;p&gt;说起这个柔性软屏就很厉害了，它不需要驱动，一共256个点，每个点都带有一块芯片和LED，
+平均算下来，芯片+LED+电容不到5毛钱&lt;/p&gt;
+
+&lt;h2 id=&quot;3外壳30&quot;&gt;3、外壳（￥30）&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/黑色透明外壳.PNG&quot; alt=&quot;黑色透明外壳&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;4树莓派可选&quot;&gt;4、树莓派（可选）&lt;/h2&gt;</content><author><name>Se7enXin</name></author><category term="Raspberry DIY" /><summary type="html">一、介绍 官网Docs wifi模块作为客户端与服务器连接同一wifi 客户端尝试与服务器建立连接，成功建立连接后客户端向服务器发出信号 服务器收到信号后向客户端发送时间相关的信息， 客户端收到后将时间信息转换为8x32柔性屏对应的指令并发送，柔性屏收到后显示 二、配件清单 1、ESP8266 WIFI模块 CP2102 ESP-12E（￥27.83） 2、8x32 WS2812B 柔性软屏（￥114） 说起这个柔性软屏就很厉害了，它不需要驱动，一共256个点，每个点都带有一块芯片和LED， 平均算下来，芯片+LED+电容不到5毛钱 3、外壳（￥30） 4、树莓派（可选）</summary></entry><entry><title type="html">JSON解析——cJSON</title><link href="http://0.0.0.0:4000/2018-06-12/JSON%E8%A7%A3%E6%9E%90-cJSON/" rel="alternate" type="text/html" title="JSON解析——cJSON" /><published>2018-06-12T00:00:00+08:00</published><updated>2018-06-12T00:00:00+08:00</updated><id>http://0.0.0.0:4000/2018-06-12/JSON%E8%A7%A3%E6%9E%90%E2%80%94%E2%80%94cJSON</id><content type="html" xml:base="http://0.0.0.0:4000/2018-06-12/JSON%E8%A7%A3%E6%9E%90-cJSON/">&lt;h1 id=&quot;一简介&quot;&gt;一、简介&lt;/h1&gt;
 
 &lt;h3 id=&quot;cjson-source-code&quot;&gt;&lt;a href=&quot;https://github.com/DaveGamble/cJSON&quot;&gt;cJSON Source Code&lt;/a&gt;&lt;/h3&gt;
 

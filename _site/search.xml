@@ -2,6 +2,50 @@
 <search>
   
     <entry>
+      <title><![CDATA[DIY一个炫酷的像素时钟]]></title>
+      <url>/2019-05-29/%E5%83%8F%E7%B4%A0%E6%97%B6%E9%92%9F/</url>
+      <content type="html"><![CDATA[<h1 id="一介绍">一、介绍</h1>
+
+<h3 id="官网docs"><a href="https://docs.blueforcer.de/#/v2/">官网Docs</a></h3>
+
+<p><img src="/assets/images/wifi像素时钟介绍.PNG" alt="wifi像素时钟介绍" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wifi模块作为客户端与服务器连接同一wifi
+客户端尝试与服务器建立连接，成功建立连接后客户端向服务器发出信号
+服务器收到信号后向客户端发送时间相关的信息，
+客户端收到后将时间信息转换为8x32柔性屏对应的指令并发送，柔性屏收到后显示
+</code></pre></div></div>
+
+<h1 id="二配件清单">二、配件清单</h1>
+
+<h2 id="1esp8266-wifi模块-cp2102-esp-12e2783">1、ESP8266 WIFI模块 CP2102 ESP-12E（￥27.83）</h2>
+
+<h2 id="28x32-ws2812b-柔性软屏114">2、8x32 WS2812B 柔性软屏（￥114）</h2>
+
+<p>说起这个柔性软屏就很厉害了，它不需要驱动，一共256个点，每个点都带有一块芯片和LED，
+平均算下来，芯片+LED+电容不到5毛钱</p>
+
+<h2 id="3外壳30">3、外壳（￥30）</h2>
+
+<p><img src="/assets/images/黑色透明外壳.PNG" alt="黑色透明外壳" /></p>
+
+<h2 id="4树莓派可选">4、树莓派（可选）</h2>
+
+]]></content>
+      <categories>
+        
+          <category> Raspberry DIY </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> Raspberry DIY </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
       <title><![CDATA[JSON解析——cJSON]]></title>
       <url>/2018-06-12/JSON%E8%A7%A3%E6%9E%90-cJSON/</url>
       <content type="html"><![CDATA[<h1 id="一简介">一、简介</h1>
