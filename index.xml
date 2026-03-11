@@ -4,42 +4,77 @@
         <link>https://se7enxin.github.io/</link>
         <description>关于 LoveIt 主题</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>se7enxin666@gmail.com (se7enxin)</managingEditor>
-            <webMaster>se7enxin666@gmail.com (se7enxin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 29 May 2019 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>se7enxin666@gmail.com (se7enxin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 09 Apr 2021 14:48:00 &#43;0000</lastBuildDate>
             <atom:link href="https://se7enxin.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>DIY一个炫酷的像素时钟</title>
-    <link>https://se7enxin.github.io/2019-05-29-%E5%83%8F%E7%B4%A0%E6%97%B6%E9%92%9F/</link>
-    <pubDate>Wed, 29 May 2019 00:00:00 &#43;0000</pubDate>
+    <title>C&#43;&#43;14天零基础学习计划Day5</title>
+    <link>https://se7enxin.github.io/c-14%E5%A4%A9%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92day5/</link>
+    <pubDate>Fri, 09 Apr 2021 14:48:00 &#43;0000</pubDate>
     <author>作者</author>
-    <guid>https://se7enxin.github.io/2019-05-29-%E5%83%8F%E7%B4%A0%E6%97%B6%E9%92%9F/</guid>
-    <description><![CDATA[一、介绍 1、官网Docs 2、简介 wifi模块作为客户端与服务器连接同一wifi 客户端尝试与服务器建立连接，成功建立连接后客户端向服务器发出信]]></description>
+    <guid>https://se7enxin.github.io/c-14%E5%A4%A9%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92day5/</guid>
+    <description><![CDATA[C++14天零基础学习计划Day5 第 5 天：C++11/17 核心特性（承上启下） 学习目标 掌握 C++11/17 基础特性，为 C++20 铺垫（这些特性 Qt 已广泛使用）。 核心]]></description>
 </item><item>
-    <title>JSON解析——cJSON</title>
-    <link>https://se7enxin.github.io/2018-06-12-json%E8%A7%A3%E6%9E%90cjson/</link>
-    <pubDate>Tue, 12 Jun 2018 00:00:00 &#43;0000</pubDate>
+    <title>C&#43;&#43;14天零基础学习计划Day1</title>
+    <link>https://se7enxin.github.io/c-14%E5%A4%A9%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92day4/</link>
+    <pubDate>Thu, 08 Apr 2021 14:48:00 &#43;0000</pubDate>
     <author>作者</author>
-    <guid>https://se7enxin.github.io/2018-06-12-json%E8%A7%A3%E6%9E%90cjson/</guid>
-    <description><![CDATA[一、简介 cJSON Source Code cJSON 是一个以ANSI C (C89) 标准编写的轻量级JSON解析库。 Introducing JSON JSON在线解析 二、How To Use cJSON包含两个文件：cJSON.c]]></description>
+    <guid>https://se7enxin.github.io/c-14%E5%A4%A9%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92day4/</guid>
+    <description><![CDATA[C++14天零基础学习计划Day1 第 1 天：C++ 与 C 的核心差异（基础语法） 学习目标 掌握 C++ 的基本语法框架，区分与 C 的核心不同点。 核心内容 C++ 程序]]></description>
 </item><item>
-    <title>Raspberry GPIO —— WiringPi  交叉编译</title>
-    <link>https://se7enxin.github.io/2018-04-12-raspberry-gpiowiringpi-%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/</link>
-    <pubDate>Thu, 12 Apr 2018 00:00:00 &#43;0000</pubDate>
+    <title>C&#43;&#43;14天零基础学习计划Day3</title>
+    <link>https://se7enxin.github.io/c-14%E5%A4%A9%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92day3/</link>
+    <pubDate>Wed, 07 Apr 2021 14:48:00 &#43;0000</pubDate>
     <author>作者</author>
-    <guid>https://se7enxin.github.io/2018-04-12-raspberry-gpiowiringpi-%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/</guid>
-    <description><![CDATA[一、Wiring Pi WiringPi is a PIN based GPIO access library written in C for the BCM2835, BCM2836 and BCM2837 SoC devices used in all Raspberry Pi. 二、交叉编译 程序在虚拟机编译，在树莓派运行。 （1）toochain 交叉编译]]></description>
+    <guid>https://se7enxin.github.io/c-14%E5%A4%A9%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92day3/</guid>
+    <description><![CDATA[14天零基础学习计划Day3]]></description>
 </item><item>
-    <title>Raspberry in common use</title>
-    <link>https://se7enxin.github.io/2018-03-14-raspberry-in-common-use/</link>
-    <pubDate>Wed, 14 Mar 2018 00:00:00 &#43;0000</pubDate>
+    <title>C&#43;&#43;14天零基础学习计划Day2</title>
+    <link>https://se7enxin.github.io/c-14%E5%A4%A9%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92day2/</link>
+    <pubDate>Tue, 06 Apr 2021 14:48:00 &#43;0000</pubDate>
     <author>作者</author>
-    <guid>https://se7enxin.github.io/2018-03-14-raspberry-in-common-use/</guid>
-    <description><![CDATA[一、Raspberry 二、Config （1）设置静态IP /etc/network/interfaces auto eth0 iface eth0 inet static address xxx.xxx.xxx.xxx gateway xxx.xxx.xxx.xxx netmask 255.255.255.0 重置网络： 1 $ /etc/init.d/networking restart （2）设置路由 1 $ route add default gw xxx.xxx.xxx.xxx （3）DNS]]></description>
+    <guid>https://se7enxin.github.io/c-14%E5%A4%A9%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92day2/</guid>
+    <description><![CDATA[C++14天零基础学习计划Day2]]></description>
 </item><item>
-    <title>QT图表解决方案-QCustomPlot</title>
-    <link>https://se7enxin.github.io/2017-12-28-qt%E5%9B%BE%E8%A1%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-qcustomplot/</link>
-    <pubDate>Thu, 28 Dec 2017 14:48:00 &#43;0000</pubDate>
+    <title>C&#43;&#43;14天零基础学习计划Day1</title>
+    <link>https://se7enxin.github.io/c-14%E5%A4%A9%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92day1/</link>
+    <pubDate>Mon, 05 Apr 2021 14:48:00 &#43;0000</pubDate>
     <author>作者</author>
-    <guid>https://se7enxin.github.io/2017-12-28-qt%E5%9B%BE%E8%A1%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-qcustomplot/</guid>
-    <description><![CDATA[一、QCustomPlot简介 QCustomPlot官网 QCustomPlot是一个用于编写可视化图表的 QT C++库。 目录结构 qcustomp]]></description>
+    <guid>https://se7enxin.github.io/c-14%E5%A4%A9%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92day1/</guid>
+    <description><![CDATA[C++14天零基础学习计划Day1 第 1 天：C++ 与 C 的核心差异（基础语法） 学习目标 掌握 C++ 的基本语法框架，区分与 C 的核心不同点。 核心内容 C++ 程序]]></description>
+</item><item>
+    <title>C&#43;&#43;14天零基础学习计划Day1</title>
+    <link>https://se7enxin.github.io/c-14%E5%A4%A9%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92day10/</link>
+    <pubDate>Mon, 05 Apr 2021 14:48:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://se7enxin.github.io/c-14%E5%A4%A9%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92day10/</guid>
+    <description><![CDATA[C++14天零基础学习计划Day1 第 1 天：C++ 与 C 的核心差异（基础语法） 学习目标 掌握 C++ 的基本语法框架，区分与 C 的核心不同点。 核心内容 C++ 程序]]></description>
+</item><item>
+    <title>C&#43;&#43;14天零基础学习计划Day1</title>
+    <link>https://se7enxin.github.io/c-14%E5%A4%A9%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92day11/</link>
+    <pubDate>Mon, 05 Apr 2021 14:48:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://se7enxin.github.io/c-14%E5%A4%A9%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92day11/</guid>
+    <description><![CDATA[C++14天零基础学习计划Day1 第 1 天：C++ 与 C 的核心差异（基础语法） 学习目标 掌握 C++ 的基本语法框架，区分与 C 的核心不同点。 核心内容 C++ 程序]]></description>
+</item><item>
+    <title>C&#43;&#43;14天零基础学习计划Day1</title>
+    <link>https://se7enxin.github.io/c-14%E5%A4%A9%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92day12/</link>
+    <pubDate>Mon, 05 Apr 2021 14:48:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://se7enxin.github.io/c-14%E5%A4%A9%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92day12/</guid>
+    <description><![CDATA[C++14天零基础学习计划Day1 第 1 天：C++ 与 C 的核心差异（基础语法） 学习目标 掌握 C++ 的基本语法框架，区分与 C 的核心不同点。 核心内容 C++ 程序]]></description>
+</item><item>
+    <title>C&#43;&#43;14天零基础学习计划Day1</title>
+    <link>https://se7enxin.github.io/c-14%E5%A4%A9%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92day13/</link>
+    <pubDate>Mon, 05 Apr 2021 14:48:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://se7enxin.github.io/c-14%E5%A4%A9%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92day13/</guid>
+    <description><![CDATA[C++14天零基础学习计划Day1 第 1 天：C++ 与 C 的核心差异（基础语法） 学习目标 掌握 C++ 的基本语法框架，区分与 C 的核心不同点。 核心内容 C++ 程序]]></description>
+</item><item>
+    <title>C&#43;&#43;14天零基础学习计划Day1</title>
+    <link>https://se7enxin.github.io/c-14%E5%A4%A9%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92day14/</link>
+    <pubDate>Mon, 05 Apr 2021 14:48:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://se7enxin.github.io/c-14%E5%A4%A9%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92day14/</guid>
+    <description><![CDATA[C++14天零基础学习计划Day1 第 1 天：C++ 与 C 的核心差异（基础语法） 学习目标 掌握 C++ 的基本语法框架，区分与 C 的核心不同点。 核心内容 C++ 程序]]></description>
 </item></channel>
 </rss>

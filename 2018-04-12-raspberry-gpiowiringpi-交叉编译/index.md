@@ -78,7 +78,7 @@ int main(void)
     for(;;)
     {
         digitalWrite(TEST_GPIO, HIGH); delay(500);
-        digitalWrite(TEST_GPIO,  LOW); delay(500);
+        digitalWrite(TEST_GPIO, LOW); delay(500);
     }
     return 0;
 }
